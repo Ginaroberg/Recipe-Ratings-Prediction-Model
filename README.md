@@ -70,3 +70,4 @@ Our model is unfair. Its RMSE for recipes with cooking time under 35 is lower th
 For our permutation test, we are examining if the distribution of RMSE when using the model on Group X and Group Y come from the same distribution. Since the two distributions are quantitative numerical, and have similar basic shapes, our test statistic is going to be the difference in RMSE.
 
 ### Conclusion
+Our observed 
