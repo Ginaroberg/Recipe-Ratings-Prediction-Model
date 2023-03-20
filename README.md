@@ -1,5 +1,8 @@
 # Recipe-Ratings-Prediction-Model
 #### by William Kam and Gina Roberg
+## Previously: Exploratory Data Analysis 
+Our exploratory data analysis on this dataset can be found [here](https://ginaroberg.github.io/Recipes-and-Reviews-Data-Analysis/).
+
 ## Framing the Problem
 ---
 ### Prediction Problem: Predict Ratings of Recipes
@@ -23,6 +26,7 @@ For our baseline model, we are using many of the columns created from the nutrit
 Using these features the performance of our model is not as good as it could be, being that the RMSE is greater than 1.
 
 ## Final Model
+---
 
 ### New Features
 The features we used in our final model include 
@@ -31,10 +35,11 @@ The features we used in our final model include
 - n_steps
 - calories
 - n_ingredients
+- reviews (was nominal but throguh TFIDF we are using them as quantitative)
+- description (was nominal but throguh TFIDF we are using them as quantitative)
 
 #### Ordinal Features:
 #### Nominal Features:
-'minutes','review','description','n_steps','calories','n_ingredients'
 
 ### Hyperparameters
 
@@ -48,6 +53,7 @@ Describe the model you chose, the hyperparameters that ended up performing the b
 Optional: Include a visualization that describes your model’s performance, e.g. a confusion matrix, if applicable.
 
 ## Fairness Analysis
+---
 
 Since the median cooking time in minutes is 35 minutes, we split our two groups into recipes with a cooking time over 103 minutes, and recipes with a cooking time under 35 minutes.
 
