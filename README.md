@@ -1,6 +1,7 @@
-# Recipe-Ratings-Prediction-Model
+# **Recipe-Ratings-Prediction-Model**
 #### by William Kam and Gina Roberg
 ## Previously: Exploratory Data Analysis 
+---
 Our exploratory data analysis on this dataset can be found [here](https://ginaroberg.github.io/Recipes-and-Reviews-Data-Analysis/).
 
 ## Framing the Problem
