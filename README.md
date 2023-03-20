@@ -16,7 +16,7 @@ In order to predict the **ratings** of recipes, we are building a **regressor mo
 For our baseline model, we are using many of the columns created from the nutrition column as features, specifically total fat, sugar, sodium, protein, saturated fat, carbohydrates, as well as minutes.  All of our features were quantitative. The features for total fat, sugar, sodium, protein, saturated fat, and carbohydrates were all extracted from the nutrition column, which we performed in our data cleaning from our EDA.
 
 #### Quantitative Features:
-- total fat 
+- total fat
 - sugar
 - sodium
 - protein
@@ -40,10 +40,12 @@ The features we used in our final model include
 - description (was nominal but throguh TFIDF we are using them as quantitative)
 
 ### Hyperparameters
+For Hyperparameters we used Polynomial Features to try to see if our data had any nonlinear relationship. To test the best degree for our data, we tried running polynomial regression by transforming our quantitative columns using PolynomialFeatures to d degrees from range(1,26). However, we found that our data has the lowest RMSE when using degree of 1 (0.5754801669400889) while all other degrees had a higher degree(~ 0.7120073200102263). This shows that our original model using linear regression of degree 1 was using the optimal hyper parameters. In addition we also used Grid Search CV for our decision tree model. We used it for hyperparameters of max_depth, min_sample_split, and criterion. We found that the best hyperparameters for our decision tree w/o text columns were {'criterion': 'gini', 'max_depth': 2, 'min_samples_split': 2}.
 
 ### Improvement
 
 ### Confusion Matrix Visualization
+![not](\Users\dakam\Desktop\p5\Recipe-Ratings-Prediction-Model\assets\download.png)
 State the features you added and why they are good for the data and prediction task. Note that you can’t simply state “these features improved my accuracy”, since you’d need to choose these features and fit a model before noticing that – instead, talk about why you believe these features improved your model’s performance from the perspective of the data generating process.
 
 Describe the model you chose, the hyperparameters that ended up performing the best, and the method you used to select hyperparameters and your overall model. Describe how your Final Model’s performance is an improvement over your Baseline Model’s performance.
