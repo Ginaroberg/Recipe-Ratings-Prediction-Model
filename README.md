@@ -39,9 +39,6 @@ The features we used in our final model include
 - reviews (was nominal but throguh TFIDF we are using them as quantitative)
 - description (was nominal but throguh TFIDF we are using them as quantitative)
 
-#### Ordinal Features:
-#### Nominal Features:
-
 ### Hyperparameters
 
 ### Improvement
