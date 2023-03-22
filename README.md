@@ -46,33 +46,25 @@ For Hyperparameters we used Polynomial Features to try to see if our data had an
 ### Improvement
 In the beginning we altered our baseline model by including different features ie. 'minutes','review','description','n_steps','calories','n_ingredients'. We chose to use review and description because we believed that they would contain the data that would most accurately correlate to the rating category. We transformed these columns into quantitative columns using tdif vectorizer. We also transformed minutes and calories into quantiles. In additon we believed that other categories were important (n_steps,n_ingredients) as they could have an effect on the rating of a recipe ie. longer steps may lead to lower rating or more ingredients may lead to better taste, higher score. This linear regression model with transformed columns had R^2 for training and testing of (0.3595132779525668, 0.3383757209722451) and a RMSE of (0.5698228214585664, 0.5741282072255443). We then experimented with polynommial regression but found that linear regression ie. d = 1 was the best hyper parameter for polynomial regression using for loop to find the best degree. Furthermore we also utilized a decision tree with the optimal hyperparameters however for the decision tree we weren't able to use the text columns review and description. For our decision tree we found a R^2 for the training and testing data of(0.7736046285492026,0.7727397035497456). We didn't use RMSE to score our decision tree model as RMSE is often not a good scoring method for multi class classifiers. In addition, we also used precision to score our decision tree and found that the precision score was 0.5971266494421488. Finally we used a Random Forest classifier with the same columns as our original model (linear regression with transformed models). This model had the best R^2 by far for both training and testing of (0.9998359101516919, 0.7799777571149884). In addition the precision score of this model was 0.730321601552345 which was much higher than our decision tree. In conclision we decided to pick Random Forest Classifier because it had the highest R^2 and precision score compared to all other models.
 
-### Confusion Matrix Visualization
-![Confusion Matrix](r'Recipe-Ratings-Prediction-Model/assets/download.png' "Confusion Matrix")
-
-State the features you added and why they are good for the data and prediction task. Note that you can’t simply state “these features improved my accuracy”, since you’d need to choose these features and fit a model before noticing that – instead, talk about why you believe these features improved your model’s performance from the perspective of the data generating process.
-
-Describe the model you chose, the hyperparameters that ended up performing the best, and the method you used to select hyperparameters and your overall model. Describe how your Final Model’s performance is an improvement over your Baseline Model’s performance.
-
-Optional: Include a visualization that describes your model’s performance, e.g. a confusion matrix, if applicable.
-
 ## Fairness Analysis
 ---
-
 Since the median cooking time in minutes is 35 minutes, we split our two groups into recipes with a cooking time over 103 minutes, and recipes with a cooking time under 35 minutes.
 
 #### **Group X:** Recipes with cooking time under 35 minutes
 
 #### **Group Y:** Recipes with cooking time over 35 minutes
 
-Since we chose to use a regression model, our evaluation metrics will be RMSE.
+Since we chose to use the Random Forest Classifier for our model, our evaluation metric will be precision.  We chose precision over recall since we thought that innacurately rating recipes higher than their actual rating would be more detrimental that innacurately rating recipes lower than their actual rating. 
 
-### **Null Hypothesis:** 
-Our model is fair. Its RMSE for recipes with cooking time under and over 35 minutes are roughly the same, and any differences are due to random chance.
+### **Null Hypothesis:**
+Our model is fair. Its precision for recipes with cooking time under and over 35 minutes are roughly the same, and any differences are due to random chance.
 
 ### **Alternative Hypothesis:**
-Our model is unfair. Its RMSE for recipes with cooking time under 35 is lower than its RMSE for recipes with cooking time over 35 minutes. 
+Our model is unfair. Its precision for recipes with cooking time under 35 is lower than its precision for recipes with cooking time over 35 minutes. 
 
-For our permutation test, we are examining if the distribution of RMSE when using the model on Group X and Group Y come from the same distribution. Since the two distributions are quantitative numerical, and have similar basic shapes, our test statistic is going to be the difference in RMSE.
+For our permutation test, we are examining if the distribution of precision when using the model on Group X and Group Y come from the same distribution. Since the two distributions are quantitative numerical, and have similar basic shapes, our test statistic is going to be the difference in precision. 
 
 ### Conclusion
-Our observed 
+Based on our observed difference in precision, and the differences in precision from our permutation test, which resulted in a p-value of 0.21, we come to the conclusion to fail to reject the null hypothesis.  This means that our model could be fair and that differences would be due to random chance between the two groups of recipes taking over 35 minutes to complete and recipes taking under 35 minutes to complete.
+
+<iframe src="assets/histogram.html" width=800 height=600 frameBorder=0></iframe>
